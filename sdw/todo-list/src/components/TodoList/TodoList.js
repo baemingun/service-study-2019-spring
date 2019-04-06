@@ -8,7 +8,8 @@ class TodoList extends Component {
 
   render() {
     const { todos, onToggle, onRemove } = this.props;
-    const todoList = todos.map(todo => (
+    console.log(this.props);
+    const todoList = todos.todos.map(todo => (
       <TodoItem
         key={todo.id}
         done={todo.done}
@@ -18,6 +19,7 @@ class TodoList extends Component {
         {todo.text}
       </TodoItem>
     ));
+
     return <div>{todoList}</div>;
   }
 }
