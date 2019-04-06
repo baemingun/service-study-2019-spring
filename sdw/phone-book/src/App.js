@@ -2,6 +2,48 @@ import React, { Component } from "react";
 import PhoneInfoList from "./components/PhoneInfoList";
 import PhoneForm from "./components/PhoneForm";
 import "./App.css";
+import styled, { css } from "styled-components";
+
+const Main = styled.div`
+  margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  background: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+    width: calc(100% - 2rem);
+  }
+`;
+
+const Title = styled.div`
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 300;
+  margin: 0;
+  padding: 0 0 30px 0;
+`;
+
+const Search = styled.div`
+  padding: 1rem;
+  display: flex;
+`;
+
+const Input = styled.input`
+  text-align: center;
+  flex: 1; //부모 요소에서 add-button을 제외한 나머지 공간을 차지합니다.
+  font-size: 1.1rem;
+  outline: none;
+  border: none;
+  background: transparent;
+
+  &:focus {
+    border-bottom: 1px solid #4c6ef5;
+  }
+`;
 
 class App extends Component {
   id = 2;
@@ -51,22 +93,23 @@ class App extends Component {
       info => info.name.indexOf(keyword) !== -1
     );
     return (
-      <div className="App">
+      <Main className="App">
+        <Title>전화번호부</Title>
         <PhoneForm onCreate={this.handleCreate} />
-        <p>
-          <input
-            placeholder="검색할이름을입력하세요"
+        <Search>
+          <Input
+            placeholder="검색할 이름을 입력하세요."
             onChange={this.handleChange}
             value={keyword}
           />
-        </p>
+        </Search>
         <hr />
         <PhoneInfoList
           data={filteredList}
           onRemove={this.handleRemove}
           onUpdate={this.handleUpdate}
         />
-      </div>
+      </Main>
     );
   }
 }

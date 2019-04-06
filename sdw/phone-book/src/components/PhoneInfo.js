@@ -1,4 +1,64 @@
 import React, { Component } from "react";
+import styled, { css } from "styled-components";
+
+const InfoBox = styled.div`
+  display: flex;
+  padding: 1rem;
+`;
+const Button = styled.button`
+  width: 5rem;
+  height: 2rem;
+  margin-left: 1rem;
+  border: 1px solid #0ca678;
+  font-weight: 500;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background: #0ca678;
+    color: white;
+  }
+  &:active {
+    background: #099268;
+  }
+  ${props =>
+    props.delete &&
+    css`
+      border: 1px solid #fa5252;
+      &:hover {
+        background: #fa5252;
+        color: white;
+      }
+      &:active {
+        background: #f03e3e;
+      }
+    `}
+`;
+const Input = styled.input`
+  text-align: center;
+  outline: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+`;
+const Text = styled.div`
+  flex: 1; //부모 요소에서 add-button을 제외한 나머지 공간을 차지합니다.
+  font-size: 1.1rem;
+  outline: none;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #000000;
+  display: flex;
+  jutify-content: center;
+  align-items: center;
+  ${props =>
+    props.phone &&
+    css`
+      border-bottom: 1px solid #868e96;
+    `}
+`;
 
 class PhoneInfo extends Component {
   static defaultProps = {
@@ -65,47 +125,44 @@ class PhoneInfo extends Component {
   }
 
   render() {
-    const style = {
-      border: "1px solid black",
-      padding: "8px",
-      margin: "8px"
-    };
     const { editing } = this.state;
 
     if (editing) {
       return (
-        <div style={style}>
-          <div>
-            <input
+        <InfoBox>
+          <Text>
+            <Input
               value={this.state.name}
               name="name"
               placeholder="이름"
               onChange={this.handleChange}
             />
-          </div>
-          <div>
-            <input
+          </Text>
+          <Text phone>
+            <Input
               value={this.state.phone}
               name="phone"
               placeholder="전화번호"
               onChange={this.handleChange}
             />
-          </div>
-          <button onClick={this.handleToggleEdit}>적용</button>
-          <button onClick={this.handleRemove}>삭제</button>
-        </div>
+          </Text>
+          <Button onClick={this.handleToggleEdit}>적용</Button>
+          <Button delete onClick={this.handleRemove}>
+            삭제
+          </Button>
+        </InfoBox>
       );
     }
     const { name, phone } = this.props.info;
     return (
-      <div style={style}>
-        <div>
-          <b>{name}</b>
-        </div>
-        <div>{phone}</div>
-        <button onClick={this.handleToggleEdit}>수정</button>
-        <button onClick={this.handleRemove}>삭제</button>
-      </div>
+      <InfoBox>
+        <Text>{name}</Text>
+        <Text phone>{phone}</Text>
+        <Button onClick={this.handleToggleEdit}>수정</Button>
+        <Button delete onClick={this.handleRemove}>
+          삭제
+        </Button>
+      </InfoBox>
     );
   }
 }
