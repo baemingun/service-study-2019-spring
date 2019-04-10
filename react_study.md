@@ -7,6 +7,9 @@
 4. Component Styling - SASS, CSS Module, Styled Component
 5. react-router, Next.js - 라우팅
 6. React Hook
+7. 코드 스플리팅, HoC
+8. SSR, CSR
+9. axios - 비동기 사용
 
 ### Additional Topic
 1. Webpack, Babel (+ Service worker)
@@ -19,5 +22,9 @@
 2. Redux 코드 따라하기
 3. To Do List with Redux
 4. Next.js README.md (보류)
+5. ref 예제
+6. redux 미들웨어 예제
+7. react-router 예제
 
 1,2,3 중 2개 이상에 SASS, styled-component 얹기 (+ CSS Module은 Option!)
+NASA API 예제는 Optional!
