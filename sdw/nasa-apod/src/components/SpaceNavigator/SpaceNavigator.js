@@ -42,7 +42,7 @@ const SpaceNavigator = ({ onPrev, onNext }) => {
   return (
     <div className="space-navigator">
       <End className="left end" left>
-        <Circle className="circle" onClick={onPrev}>
+        <Circle className="circle" onClick={onNext}>
           <LeftIcon />
         </Circle>
       </End>
