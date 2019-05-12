@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Header = styled.header``;
 const ViewerWrapper = styled.div``;
 
-const Viewer_template = styled.div`
+const ViewTemplate = styled.div`
   ${Header} {
     background: #2c3e50;
     height: 4rem;
@@ -29,13 +29,13 @@ const Viewer_template = styled.div`
 
 const ViewerTemplate = ({ viewer, spaceNavigator }) => {
   return (
-    <Viewer_template className="viewer-template">
+    <ViewTemplate className="viewer-template">
       <Header>Astromy Picture of the Day</Header>
       <ViewerWrapper className="viewer-wrapper">
         {viewer}
         <div className="space-navigator-wrapper">{spaceNavigator}</div>
       </ViewerWrapper>
-    </Viewer_template>
+    </ViewTemplate>
   );
 };
 
