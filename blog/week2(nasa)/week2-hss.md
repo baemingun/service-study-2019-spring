@@ -22,7 +22,7 @@
 ![create-react-app v3, What's new?](https://scotch-res.cloudinary.com/image/upload/w_1000,q_auto:good,f_auto/v1556557861/pqxre3spr1nd6mc5tzjb.jpg)
 
 ---
-
+### CRA 3.0 update
 **Hooks를 지원합니다.**
 
 React Hooks이라는 최신 기술이 있습니다. Hooks는 컴포넌트를 작성하는 데 있어 class component가 아닌 functional component를 사용하면서, 여러 stateful logic을 지원합니다. 이것은 컴포넌트를 pure한 방향으로 작성할 수 있게 도울 뿐만 아니라 어플리케이션의 속도를 향상시킬 수 있습니다.
@@ -30,13 +30,13 @@ React Hooks이라는 최신 기술이 있습니다. Hooks는 컴포넌트를 작
  CRA 3.0에서는 Hooks를 정식 지원하면서, App.js가 functional component로 작성되어 있습니다.
 
 ---
-
+### CRA 3.0 update
 **Typescript linting을 지원합니다.**
 
 CRA 3.0에서는 프로젝트를 Typescript로 작성할 때 linting을 지원합니다. Visual Studio Code에서는 제한된 법칙을 사용하지 않는 경우에 error message를 보여줍니다.
 
 ---
-
+### CRA 3.0 update
 browserslist를 지원합니다.
 
 package.json에서의 browserlist config는 production과 development에서 사용되는 JS 파일들을 컨트롤할 수 있습니다.
@@ -72,7 +72,7 @@ export default withRequest;
 ```
 
 ---
-
+### HoC(High-order-Component)
 이것을 사용하게 된다면 포맷은 다음과 같습니다. 컴포넌트를 내보내는 부분에서 Post를 withRequest로 감싸고 있습니다.
 
 <code>Post.js</code>
@@ -96,7 +96,7 @@ export default withRequest('https://jsonplaceholder.typicode.com/posts/1')(Post)
 ```
 
 ---
-
+### HoC(High-order-Component)
 만약에 Comment.js처럼 유사한 기능을 하는 컴포넌트의 경우 withRequest의 api 주소 부분만 바꿔주면 됩니다.
 
 ```js
@@ -129,7 +129,7 @@ Hooks는 React v16.8에 새로 도입된 기능으로, 앞서 CRA 3.0버전에 �
 
 ### Hooks - useState
 
-useState는 가장 기본적인 Hook입니다. 함수형 컴포넌트에서도 State를 가질 수 있게 해 주는데요, 클래스의 State와 동일하다고 생각하면 됩니다. 다음은 예제 코드입니다.
+useState는 가장 기본적인 Hook입니다. 함수형 컴포넌트에서도 State를 가질 수 있게 해 주는데요, 클래스의 State와 유사하게 이해하실 수 있습니다. 다음은 예제 코드입니다.
 
 ```js
 import React, { useState } from 'react';
@@ -199,7 +199,7 @@ useState를 이용하면 클래스형 컴포넌트를 사용하지 않고도 상
 
 ### Hooks - useEffect
 
-useEffect는 리액트 컴포넌트가 렌더링 될 때마다 특정 작업을 수행하도록 설정할 수 있는 Hook입니다. 클래스형 컴포넌트의  componentDidMount 와 componentDidUpdate를 합친 형태라고 볼 수 있습니다. 기본적인 형태는 다음과 같습니다.
+useEffect는 리액트 컴포넌트가 렌더링 될 때마다 특정 작업을 수행하도록 설정할 수 있는 Hook입니다. 클래스형 컴포넌트의  componentDidMount 와 componentDidUpdate, 그리고 componentWillUnmount를 합친 형태와 유사하지만, **분명히 다른 점도 존재합니다**. 기본적인 형태는 다음과 같습니다.
 
 ```js
  useEffect(() => {
@@ -211,7 +211,9 @@ useEffect는 리액트 컴포넌트가 렌더링 될 때마다 특정 작업을 
 
 ### Hooks - useEffect(마운트될 때만)
 
-앞서 useEffect는 componentDidMount 와 componentDidUpdate를 합친 형태라고 볼 수 있다고 하였는데, 이 둘 중 **componentDidMount에만 실행되고 싶을 때**는 다음과 같이 사용할 수 있습니다. 함수의 두 번째 파라미터로 비어있는 배열을 넣어줍니다.
+useEffect를 이용하면 함수형 컴포넌트에서 마운트 될 때 이벤트를 처리할 수 있습니다. 즉,  Class형 컴포넌트에서의 **componentDidMount와 유사한 상황 **과 유사한 상황을 다음과 같이 사용할 수 있습니다. 
+
+함수의 두 번째 파라미터로 비어있는 배열을 넣어줍니다.
 
 ```js
  useEffect(() => {
@@ -223,7 +225,7 @@ useEffect는 리액트 컴포넌트가 렌더링 될 때마다 특정 작업을 
 
 ### Hooks - useEffect(업데이트될 때만)
 
-**componentDidUpdate에만 실행되고 싶을 때** 를 클래스형 컴포넌트라면 아래와 같이 작성할 수 있습니다.
+useEffect를 이용하면 함수형 컴포넌트에서 어떤 값이 업데이트 될 때 이벤트를 처리할 수 있습니다. 즉,  Class형 컴포넌트에서의 **componentDidUpdate와 유사한 상황 **과 유사한 상황을 다음과 같이 사용할 수 있습니다. 
 
 ```js
 componentDidUpdate(prevProps, prevState) {
@@ -243,11 +245,34 @@ componentDidUpdate(prevProps, prevState) {
 
 ---
 
+### Hooks - useEffect : 조심할 점!
+
+useEffect는 componentDidMount + componentDidUpdate + componentWillUnmount가 아닙니다.
+useEffect 훅을 사용하기 전에 고려해야 하는 점이 있습니다. 이 훅은 조금 특별하고 다르고 멋지기 때문인데요. 클래스 컴포넌트에서 훅으로 리팩토링할 때에 componentDidMount, componentDidUpdate, componentWillUnmount를 하나 이상의  useEffect 콜백 함수로 바꾸게 될 겁니다.
+
+리팩토링이 아니고 useEffect 콜백은 이후에 구동하도록 예정 되었습니다. componentDidMount나 componentDidUpdate와 다르게 useEffect로 예정한 효과는 브라우저가 화면을 업데이트하는 것을 막지 않습니다. 앱이 더 높은 응답성을 제공할 수 있도록 이렇게 동작합니다. 대부분의 효과는 동기적으로 구동될 필요가 없습니다. 동기적으로 동작하는 경우는 레이아웃을 측정해야 한다거나 하는 등 특수한 경우에 해당합니다. 이런 코드는 useLayoutEffect에 넣을 수 있으며 useEffect와 동일하게 동작하는 API입니다.
+
+---
+
 ### Hooks - 그 외
 
 Hooks에는 이 두가지 함수 이외에도 useReducer, useContext 등 기존의 클래스형 컴포넌트에서 할 수 있는 기능들을 함수형 컴포넌트에서도 동작하게 하도록 하는 많은 Hook들이 있습니다. 심지어 useMemo나 useCallback을 사용하면 연산을 최적화하거나, 렌더링 성능을 최적화할 수도 있습니다. 만약 여러 컴포넌트에서 비슷한 기능을 공유하게 된다면 로직 재사용성을 위한 Custom Hook도 지원합니다.
 
 Hook은 클래스형 컴포넌트가 필요없이 어플리케이션을 작성할 수 있으나, 클래스형 컴포넌트의 개념들을 모른다면 러닝 커브가 상당히 높습니다. 그렇기에 컴포넌트 라이프 사이클, 리덕스, 콘텍스트 API, ref등 클래스형 컴포넌트의 개념을 익힌 후에 Hooks를 학습하시는 것을 추천드립니다.
+
+---
+
+### Hooks - 그 외
+
+1. 리액트 함수의 제일 상단에 작성해야합니다. 
+
+- 조건문, 내부 함수, 반복문 안에 사용하지 않습니다.
+
+
+
+2. 리액트 함수 안에서만 사용합니다. 
+
+- custom 함수 안에서는 예외적으로 호출 할 수 있습니다.
 
 ---
 
@@ -394,7 +419,11 @@ match.url은 현재 라우트의 경로를 알려줍니다. 첫 번째 Route 컴
   - 프로젝트의 복잡도 : 프로젝트 구조가 많이 복잡해 집니다.
   - 성능 악화 가능성 : 서버사이드 렌더링을 하게 되면서 서버의 부담이 커지고, 서버사이드 렌더링에서 사용하게 되는 renderToString이라는 함수가 동기적으로 작동하여 문제가 될 수 있습니다. 하지만 여러 대안이 있으므로 고려해 볼 수 있습니다.
 
+---
 
+### CSR (ClientSide Rendering)
+
+반면에 CSR은 서버에서 View를 렌더링하지 않습니다. HTML과 JS파일, 그리고 여타 서비스에 필요한 리소스를 다운로드한 후 브라우저에서 렌더링합니다. 그렇기에 SSR대비 초기 View를 보기까지의 시간이 오래 걸립니다.
 
 ---
 
